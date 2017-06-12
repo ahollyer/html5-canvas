@@ -1,0 +1,11 @@
+{
+  "name": "shared-canvas",
+  "version": "1.0.0",
+  "description": "a shared drawing app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
