@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shared Canvas</title>
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #333;
+      font-family: sans-serif;
+      color: pink;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      padding: 0;
+      color: rgb(250, 100, 150);
+    }
+    canvas {
+      margin-bottom: 35px;
+      border: 1px dotted #ccc;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>HTML5 Canvas Practice</h1>
+    <h2>1. Draw a rectangle</h2>
+    <canvas id="one" width="200" height="200"></canvas>
+
+    <h2>2. Draw 2 rectangles next to each other</h2>
+    <canvas id="two" width="200" height="200"></canvas>
+
+    <h2>3. Draw 2 rectangles, one inside the other</h2>
+    <canvas id="three" width="200" height="200"></canvas>
+
+    <h2>4. Draw a circle</h2>
+    <canvas id="four" width="200" height="200"></canvas>
+
+    <h2>5. Draw 2 circles, one inside the other</h2>
+    <canvas id="five" width="200" height="200"></canvas>
+
+    <h2>6. Draw a bullseye with 3 concentric circles</h2>
+    <canvas id="six" width="200" height="200"></canvas>
+
+    <script>
+      let canvas = document.querySelector('#one')
+      let ctx = canvas.getContext('2d')
+
+      // 1. Draw a rectangle
+      ctx.fillStyle = 'purple'
+      ctx.fillRect(50, 50, 80, 120)
+
+      // 2. Draw 2 rectangles next to each other
+      canvas = document.querySelector('#two')
+      ctx = canvas.getContext('2d')
+      ctx.fillStyle = 'purple'
+      ctx.fillRect(30, 30, 50, 100)
+      ctx.fillStyle = 'pink'
+      ctx.fillRect(80, 30, 50, 100)
+
+      // 3. Draw 2 rectangles, one inside the other
+      canvas = document.querySelector('#three')
+      ctx = canvas.getContext('2d')
+      ctx.fillStyle = 'purple'
+      ctx.fillRect(30, 30, 50, 100)
+      ctx.fillStyle = 'pink'
+      ctx.fillRect(40, 40, 30, 80)
+
+
+      // 4. Draw a circle
+      canvas = document.querySelector('#four')
+      ctx = canvas.getContext('2d')
+      ctx.beginPath()
+      ctx.fillStyle = 'magenta'
+      ctx.ellipse(100, 100, 50, 50, 0, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.closePath()
+
+      // 5. Draw 2 circles, one inside the other
+      canvas = document.querySelector('#five')
+      ctx = canvas.getContext('2d')
+      ctx.beginPath()
+      ctx.fillStyle = 'magenta'
+      ctx.ellipse(100, 100, 50, 50, 0, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.closePath()
+      ctx.beginPath()
+      ctx.fillStyle = 'turquoise'
+      ctx.ellipse(100, 100, 30, 30, 0, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.closePath()
+
+      // 6. Draw a bullseye with 3 concentric circles
+      canvas = document.querySelector('#six')
+      ctx = canvas.getContext('2d')
+      ctx.beginPath()
+      ctx.fillStyle = 'magenta'
+      ctx.ellipse(100, 100, 50, 50, 0, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.closePath()
+      ctx.beginPath()
+      ctx.fillStyle = 'turquoise'
+      ctx.ellipse(100, 100, 30, 30, 0, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.closePath()
+      ctx.beginPath()
+      ctx.fillStyle = 'yellow'
+      ctx.ellipse(100, 100, 10, 10, 0, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.closePath()
+
+    </script>
+  </body>
+</html>
