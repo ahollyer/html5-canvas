@@ -17,12 +17,11 @@ could be used as a shared whiteboard for drawing simple sketches or diagrams.
 
 ----
 #### Areas to Improve
-- Improve mobile responsiveness
-- Add login system
-- Add database to store and reuse chalkboards
+- Mobile Responsiveness (canvas resizing options?)
 
 #### Future Plans - Shared Chalkboard
 
 - [ ] Add ability to login
 - [ ] Add ability to save chalkboards to database
 - [x] ~~Support touch devices~~ Done!
+- [ ] Possibly turn into Pictionary-style game
