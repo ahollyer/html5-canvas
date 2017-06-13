@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Shared Chalkboard</title>
-    <!-- styles -->
+
+    <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
@@ -11,33 +12,40 @@
   <body>
     <div class="container-fluid">
       <div class="row text-center">
+
+        <!-- Header -->
         <div class="col-xs-12">
           <h1>Shared Chalkboard</h1>
-        </div><!-- .col -->
+        </div>
 
-          <div class="col-xs-12 controls">
-            <button id="red">red</button>
-            <button id="orange">orange</button>
-            <button id="yellow">yellow</button>
-            <button id="green">green</button>
-            <button id="turquoise">blue</button>
-            <button id="purple">purple</button>
-            <button id="pink">pink</button>
-            <button id="white">white</button>
-          </div><!-- .col -->
+        <!-- Color Controls -->
+        <div class="col-xs-12 controls">
+          <button id="red">red</button>
+          <button id="orange">orange</button>
+          <button id="yellow">yellow</button>
+          <button id="green">green</button>
+          <button id="turquoise">blue</button>
+          <button id="purple">purple</button>
+          <button id="pink">pink</button>
+          <button id="white">white</button>
+        </div>
 
+        <!-- Chalkboard -->
         <div class="col-xs-12">
           <canvas width="800" height="600"></canvas>
-        </div><!-- .col -->
+        </div>
+
+        <!-- Draw Tool Controls -->
         <div class="col-xs-12 controls">
           <button id="thin">skinny chalk</button>
           <button id="thick">sidewalk chalk</button>
-          <button id="eraser">eraser</button>        
-        </div><!-- .col -->
+          <button id="eraser">eraser</button>
+        </div>
+
       </div><!-- .row -->
     </div><!-- .container-fluid -->
 
-    <!-- scripts -->
+    <!-- Scripts -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="frontend.js"></script>
   </body>
