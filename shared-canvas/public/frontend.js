@@ -61,24 +61,29 @@ const turquoise = document.getElementById("turquoise")
 const yellow = document.getElementById("yellow")
 const orange = document.getElementById("orange")
 const white = document.getElementById("white")
+const eraser = document.getElementById("eraser")
 
-pink.addEventListener('click', function(event) {
+pink.addEventListener('click', function() {
   color = 'rgb(250, 100, 150)'
 })
-purple.addEventListener('click', function(event) {
+purple.addEventListener('click', function() {
   color = '#9B27AF'
 })
-turquoise.addEventListener('click', function(event) {
+turquoise.addEventListener('click', function() {
   color = 'turquoise'
 })
-yellow.addEventListener('click', function(event) {
+yellow.addEventListener('click', function() {
   color = 'yellow'
 })
-orange.addEventListener('click', function(event) {
+orange.addEventListener('click', function() {
   color = '#FE5722'
 })
-white.addEventListener('click', function(event) {
+white.addEventListener('click', function() {
   color = 'white'
+})
+eraser.addEventListener('click', function() {
+  color = '#333'
+  drawtool = 20
 })
 
 // Allow user to select line thickness
@@ -90,5 +95,5 @@ thin.addEventListener('click', function() {
 })
 
 thick.addEventListener('click', function() {
-  drawtool = 12
+  drawtool = 20
 })

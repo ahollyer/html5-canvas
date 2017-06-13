@@ -28,19 +28,23 @@ button {
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
 }
+button:hover {
+  background-color: pink;
+  color: #333;
+}
 #pink {
   color: rgb(250, 100, 150);
 }
 #pink:hover {
   background-color: rgb(250, 100, 150);
-  color: #fff;
+  color: #333;
 }
 #purple {
-  color: #9B27AF;
+  color: #7C4DFE;
 }
 #purple:hover {
-  background-color: #9B27AF;
-  color: #fff;
+  background-color: #7C4DFE;
+  color: #333;
 }
 #yellow {
   color: yellow;
@@ -54,19 +58,33 @@ button {
 }
 #orange:hover {
   background-color: #FE5722;
-  color: #fff;
+  color: #333;
+}
+#green {
+  color: #8BC24A;
+}
+#green:hover {
+  background-color: #8BC24A;
+  color: #333;
 }
 #turquoise {
   color: turquoise;
 }
 #turquoise:hover {
   background-color: turquoise;
-  color: #fff;
+  color: #333;
 }
 #white {
   color: white;
 }
 #white:hover {
   background-color: white;
+  color: #333;
+}
+#red {
+  color: #F34336;
+}
+#red:hover {
+  background-color: #F34336;
   color: #333;
 }

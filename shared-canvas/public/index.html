@@ -10,22 +10,29 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 text-center">
+      <div class="row text-center">
+        <div class="col-xs-12">
           <h1>Shared Chalkboard</h1>
+        </div><!-- .col -->
+
+          <div class="col-xs-12 controls">
+            <button id="red">red</button>
+            <button id="orange">orange</button>
+            <button id="yellow">yellow</button>
+            <button id="green">green</button>
+            <button id="turquoise">blue</button>
+            <button id="purple">purple</button>
+            <button id="pink">pink</button>
+            <button id="white">white</button>
+          </div><!-- .col -->
+
+        <div class="col-xs-12">
           <canvas width="800" height="600"></canvas>
         </div><!-- .col -->
-        <div class="col-xs-12 controls text-center">
-          <button id="pink">pink</button>
-          <button id="purple">purple</button>
-          <button id="turquoise">turquoise</button>
-  	      <button id="yellow">yellow</button>
-  	      <button id="orange">orange</button>
-  	      <button id="white">white</button>
-          <br><br>
+        <div class="col-xs-12 controls">
           <button id="thin">skinny chalk</button>
           <button id="thick">sidewalk chalk</button>
-
+          <button id="eraser">eraser</button>        
         </div><!-- .col -->
       </div><!-- .row -->
     </div><!-- .container-fluid -->
