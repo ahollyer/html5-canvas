@@ -1,99 +1,113 @@
 const socket = io()
 
-// Chalkboard functionality
+/********* Chalkboard Variables ************/
+let draw_settings = {
+  past: null,
+  current: null,
+  color: 'rgb(250, 100, 150)',
+  draw_tool: 3
+}
+let mouse_down = false
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
 
-// To draw smoothed curves
-function draw(past, current, color, drawtool) {
+/************* Color Palette ****************/
+let palette = {
+  red: document.getElementById("red"),
+  orange: document.getElementById("orange"),
+  yellow: document.getElementById("yellow"),
+  green: document.getElementById("green"),
+  turquoise: document.getElementById("turquoise"),
+  purple: document.getElementById("purple"),
+  pink: document.getElementById("pink"),
+  white: document.getElementById("white"),
+}
+
+palette.red.addEventListener('click', function() {
+  draw_settings.color = '#F34336'
+})
+palette.orange.addEventListener('click', function() {
+  draw_settings.color = '#FE5722'
+})
+palette.yellow.addEventListener('click', function() {
+  draw_settings.color = 'yellow'
+})
+palette.green.addEventListener('click', function() {
+  draw_settings.color = '#8BC24A'
+})
+palette.turquoise.addEventListener('click', function() {
+  draw_settings.color = 'turquoise'
+})
+palette.purple.addEventListener('click', function() {
+  draw_settings.color = '#7C4DFE'
+})
+palette.pink.addEventListener('click', function() {
+  draw_settings.color = 'rgb(250, 100, 150)'
+})
+palette.white.addEventListener('click', function() {
+  draw_settings.color = 'white'
+})
+
+/**************** Drawing Tools ***************/
+let thin = document.getElementById("thin")
+let thick = document.getElementById("thick")
+let eraser = document.getElementById("eraser")
+
+thin.addEventListener('click', function() {
+  if(draw_settings.color === '#333') {
+    draw_settings.color = 'rgb(250, 100, 150)'
+  }
+  draw_settings.draw_tool = 3
+})
+thick.addEventListener('click', function() {
+  if(draw_settings.color === '#333') {
+    draw_settings.color = 'rgb(250, 100, 150)'
+  }
+
+  draw_settings.draw_tool = 20
+})
+eraser.addEventListener('click', function() {
+  draw_settings.color = '#333'
+  draw_settings.draw_tool = 20
+})
+
+/********* Draw Smoothed Curves **********/
+function draw(draw_settings) {
   ctx.beginPath()
-  ctx.lineWidth = drawtool
-  ctx.strokeStyle = color
-  ctx.moveTo(past[0], past[1])
+  ctx.lineWidth = draw_settings.draw_tool
+  ctx.strokeStyle = draw_settings.color
+  ctx.moveTo(draw_settings.past[0], draw_settings.past[1])
   ctx.quadraticCurveTo(
-    past[0], past[1],
-    current[0], current[1]
+    draw_settings.past[0], draw_settings.past[1],
+    draw_settings.current[0], draw_settings.current[1]
   )
   ctx.stroke()
   ctx.closePath()
 }
 
-// Catch mouse events
-let past = null
-let current = null
-let color = 'rgb(250, 100, 150)'
-let drawtool = 3
-
-let mouse_down = false
-
-// ctx.beginPath()
+/********* Accept Mouse Input ****************/
 canvas.addEventListener('mousedown', function(event) {
   mouse_down = true
   // console.log('down', event.offsetX, event.offsetY)
 })
 canvas.addEventListener('mouseup', function(event) {
   mouse_down = false
-  past = null
+  draw_settings.past = null
   // console.log('up', event.offsetX, event.offsetY)
 })
 canvas.addEventListener('mousemove', function(event) {
   if(mouse_down) {
-    current = [event.offsetX, event.offsetY]
+    draw_settings.current = [event.offsetX, event.offsetY]
     // console.log('move', event.offsetX, event.offsetY)
-    if(past) {
-      draw(past, current, color, drawtool)
+    if(draw_settings.past) {
+      draw(draw_settings)
     }
-    socket.emit('draw', past, current, color, drawtool)
-    past = [event.offsetX, event.offsetY]
+    socket.emit('draw', draw_settings)
+    draw_settings.past = [event.offsetX, event.offsetY]
   }
 })
-
-socket.on('draw', function(past, current, color, drawtool) {
-  if(past) {
-    draw(past, current, color, drawtool)
+socket.on('draw', function(draw_settings) {
+  if(draw_settings.past) {
+    draw(draw_settings)
   }
-})
-
-// Allow user to change colors
-const pink = document.getElementById("pink")
-const purple = document.getElementById("purple")
-const turquoise = document.getElementById("turquoise")
-const yellow = document.getElementById("yellow")
-const orange = document.getElementById("orange")
-const white = document.getElementById("white")
-const eraser = document.getElementById("eraser")
-
-pink.addEventListener('click', function() {
-  color = 'rgb(250, 100, 150)'
-})
-purple.addEventListener('click', function() {
-  color = '#9B27AF'
-})
-turquoise.addEventListener('click', function() {
-  color = 'turquoise'
-})
-yellow.addEventListener('click', function() {
-  color = 'yellow'
-})
-orange.addEventListener('click', function() {
-  color = '#FE5722'
-})
-white.addEventListener('click', function() {
-  color = 'white'
-})
-eraser.addEventListener('click', function() {
-  color = '#333'
-  drawtool = 20
-})
-
-// Allow user to select line thickness
-const thin = document.getElementById("thin")
-const thick = document.getElementById("thick")
-
-thin.addEventListener('click', function() {
-  drawtool = 3
-})
-
-thick.addEventListener('click', function() {
-  drawtool = 20
 })
