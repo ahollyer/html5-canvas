@@ -9,6 +9,8 @@ let draw_settings = {
 }
 let mouse_down = false
 let canvas = document.querySelector('canvas')
+canvas.width = window.innerWidth * 0.8
+canvas.height = window.innerHeight * 0.6
 let ctx = canvas.getContext('2d')
 
 /************* Color Palette ****************/
