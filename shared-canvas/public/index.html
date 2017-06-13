@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shared Chalkboard</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <h1>Shared Chalkboard</h1>
+          <canvas width="800" height="600"></canvas>
+        </div><!-- .col -->
+        <div class="col-xs-12 controls text-center">
+          <button id="pink">pink</button>
+          <button id="purple">purple</button>
+          <button id="turquoise">turquoise</button>
+  	      <button id="yellow">yellow</button>
+  	      <button id="orange">orange</button>
+  	      <button id="white">white</button>
+          <br><br>
+          <button id="thin">skinny chalk</button>
+          <button id="thick">sidewalk chalk</button>
+
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div><!-- .container-fluid -->
+
+    <!-- scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="frontend.js"></script>
+  </body>
+</html>
