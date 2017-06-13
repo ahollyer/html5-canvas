@@ -1,4 +1,5 @@
-# HTML5 Canvas Practice
+# [Shared Chalkboard App](http://chalkboard.aspenhollyer.com)
+## And HTML5 Canvas Practice
 ### Aspen Hollyer
 ----
 #### Project Notes
@@ -12,7 +13,7 @@ could be used as a shared whiteboard for drawing simple sketches or diagrams.
 #### Strengths
 - Used node with express & socket.io to allow drawing in a chatroom-style environment
 - Learned to deploy a node app
-- Learned to configure nginx server to deploy multiple apps
+- Learned to configure nginx server for hosting multiple apps
 
 ----
 #### Areas to Improve
