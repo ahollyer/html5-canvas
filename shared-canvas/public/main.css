@@ -6,8 +6,8 @@ body {
   color: pink;
 }
 h1 {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0;
 }
 canvas {
@@ -31,6 +31,9 @@ button {
 button:hover {
   background-color: pink;
   color: #333;
+}
+.controls {
+  margin-bottom: 10px;
 }
 
 /***** COLOR BUTTONS *****/

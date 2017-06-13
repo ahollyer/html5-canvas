@@ -63,7 +63,6 @@ thick.addEventListener('click', function() {
   if(draw_settings.color === '#333') {
     draw_settings.color = 'rgb(250, 100, 150)'
   }
-
   draw_settings.draw_tool = 20
 })
 eraser.addEventListener('click', function() {
@@ -71,7 +70,7 @@ eraser.addEventListener('click', function() {
   draw_settings.draw_tool = 20
 })
 
-/********* Draw Smoothed Curves **********/
+/********* Draw Function - Smoothed Curves **********/
 function draw(draw_settings) {
   ctx.beginPath()
   ctx.lineWidth = draw_settings.draw_tool
@@ -85,29 +84,62 @@ function draw(draw_settings) {
   ctx.closePath()
 }
 
-/********* Accept Mouse Input ****************/
-canvas.addEventListener('mousedown', function(event) {
+/******** Accept Mouse Input, Transmit To/From Server **********/
+function begin_draw(event) {
   mouse_down = true
-  // console.log('down', event.offsetX, event.offsetY)
-})
-canvas.addEventListener('mouseup', function(event) {
+}
+function end_draw(event) {
   mouse_down = false
   draw_settings.past = null
-  // console.log('up', event.offsetX, event.offsetY)
-})
-canvas.addEventListener('mousemove', function(event) {
+}
+function transmit_draw(event) {
   if(mouse_down) {
     draw_settings.current = [event.offsetX, event.offsetY]
-    // console.log('move', event.offsetX, event.offsetY)
     if(draw_settings.past) {
       draw(draw_settings)
     }
     socket.emit('draw', draw_settings)
     draw_settings.past = [event.offsetX, event.offsetY]
   }
-})
+}
 socket.on('draw', function(draw_settings) {
   if(draw_settings.past) {
     draw(draw_settings)
   }
 })
+
+canvas.addEventListener('mousedown', begin_draw)
+canvas.addEventListener('mouseup', end_draw)
+canvas.addEventListener('mousemove', transmit_draw)
+
+/****** Mobile/Touch Support - Emulate Mouse Events *****/
+canvas.addEventListener("touchstart", function (event) {
+  let touch = event.touches[0];
+  let mouseEvent = new MouseEvent("mousedown", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  })
+  canvas.dispatchEvent(mouseEvent)
+})
+canvas.addEventListener("touchend", function (event) {
+  let mouseEvent = new MouseEvent("mouseup", {})
+  canvas.dispatchEvent(mouseEvent)
+})
+canvas.addEventListener("touchmove", function (event) {
+  let touch = event.touches[0]
+  let mouseEvent = new MouseEvent("mousemove", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  })
+  canvas.dispatchEvent(mouseEvent)
+})
+
+/********* Prevent scrolling for touch events ********/
+function prevent_scroll(event) {
+  if(event.target === canvas) {
+    event.preventDefault()
+  }
+}
+canvas.addEventListener('touchstart', prevent_scroll)
+canvas.addEventListener('touchend', prevent_scroll)
+canvas.addEventListener('touchmove', prevent_scroll)
