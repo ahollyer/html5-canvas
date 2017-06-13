@@ -24,3 +24,4 @@ could be used as a shared whiteboard for drawing simple sketches or diagrams.
 
 - [ ] Add ability to login
 - [ ] Add ability to save chalkboards to database
+- [x] ~~Support touch devices~~ Done!
