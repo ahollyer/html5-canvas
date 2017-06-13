@@ -32,25 +32,13 @@ button:hover {
   background-color: pink;
   color: #333;
 }
-#pink {
-  color: rgb(250, 100, 150);
+
+/***** COLOR BUTTONS *****/
+#red {
+  color: #F34336;
 }
-#pink:hover {
-  background-color: rgb(250, 100, 150);
-  color: #333;
-}
-#purple {
-  color: #7C4DFE;
-}
-#purple:hover {
-  background-color: #7C4DFE;
-  color: #333;
-}
-#yellow {
-  color: yellow;
-}
-#yellow:hover {
-  background-color: yellow;
+#red:hover {
+  background-color: #F34336;
   color: #333;
 }
 #orange {
@@ -58,6 +46,13 @@ button:hover {
 }
 #orange:hover {
   background-color: #FE5722;
+  color: #333;
+}
+#yellow {
+  color: yellow;
+}
+#yellow:hover {
+  background-color: yellow;
   color: #333;
 }
 #green {
@@ -74,17 +69,24 @@ button:hover {
   background-color: turquoise;
   color: #333;
 }
+#purple {
+  color: #7C4DFE;
+}
+#purple:hover {
+  background-color: #7C4DFE;
+  color: #333;
+}
+#pink {
+  color: rgb(250, 100, 150);
+}
+#pink:hover {
+  background-color: rgb(250, 100, 150);
+  color: #333;
+}
 #white {
   color: white;
 }
 #white:hover {
   background-color: white;
-  color: #333;
-}
-#red {
-  color: #F34336;
-}
-#red:hover {
-  background-color: #F34336;
   color: #333;
 }
