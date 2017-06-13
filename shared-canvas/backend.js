@@ -10,17 +10,9 @@ app.get('/', function(req, resp) {
 })
 
 io.on('connection', function(client) {
-  console.log('Connected!')
-
-  client.on('disconnect', function() {
-    console.log('Exited!')
-  })
-
-  client.on('draw', function(past, current, color, drawtool) {
-    io.emit('draw', past, current, color, drawtool)
+  client.on('draw', function(draw_settings) {
+    io.emit('draw', draw_settings)
   })
 })
 
-http.listen('8001', function() {
-  console.log('Listening on port 8001')
-})
+http.listen('8001')
